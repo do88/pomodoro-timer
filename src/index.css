@@ -1,0 +1,32 @@
+/* PostCSS Normalize */
+@import-normalize;
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+/* CSS Variables */
+:root {
+	--light-grey: #ecedef;
+}
+
+/* Wrapper */
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 100vh;
+	background: var(--light-grey);
+}

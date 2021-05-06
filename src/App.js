@@ -1,15 +1,22 @@
+// Core imports
 import React from 'react';
 import { MyContext } from './context';
 
+// Project components
+import Header from './components/header';
+
+// App styling
+import './index.css';
+
 class App extends React.Component {
 	static contextType = MyContext;
+
 	render() {
 		return (
 			<div className="wrapper">
-				<div className="center-wrapper">
-					<h1>Who pays the bill ?</h1>
-					{console.log(this.context.state)}
-				</div>
+				<Header />
+				<main className="timer">Timer</main>
+				<footer className="footer">Footer</footer>
 			</div>
 		);
 	}
