@@ -1,0 +1,11 @@
+.footer {
+	padding: 1rem 2rem;
+	font-size: 1.6rem;
+	text-align: center;
+	color: var(--color-med-grey);
+	line-height: 1.5;
+}
+
+.footer a {
+	color: inherit;
+}

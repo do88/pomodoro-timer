@@ -4,6 +4,7 @@ import { MyContext } from './context';
 
 // Project components
 import Header from './components/header';
+import Footer from './components/footer';
 
 // App styling
 import './index.css';
@@ -16,7 +17,7 @@ class App extends React.Component {
 			<div className="wrapper">
 				<Header />
 				<main className="timer">Timer</main>
-				<footer className="footer">Footer</footer>
+				<Footer />
 			</div>
 		);
 	}

@@ -14,11 +14,17 @@ html {
 	box-sizing: border-box;
 	font-size: 62.5%;
 	scroll-behavior: smooth;
+	font-family: 'Josefin Sans', sans-serif;
 }
+
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
 
 /* CSS Variables */
 :root {
-	--light-grey: #ecedef;
+	--color-white: #fff;
+	--color-light-grey: #ecedef;
+	--color-med-grey: #738692;
 }
 
 /* Wrapper */
@@ -28,5 +34,5 @@ html {
 	align-items: center;
 	justify-content: space-between;
 	min-height: 100vh;
-	background: var(--light-grey);
+	background: var(--color-light-grey);
 }

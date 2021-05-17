@@ -1,13 +1,11 @@
 .header {
-	background: var(--color-green);
-	padding: 1rem 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 90%;
 	max-width: 410px;
-}
-
-.header__logo {
-	width: 90%;
+	padding: 1rem 2rem 1.5rem;
+	background: var(--color-white);
+	border-radius: 0 0 1rem 1rem;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 }
