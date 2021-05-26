@@ -4,11 +4,11 @@ const Header = () => {
 	return (
 		<footer className="footer">
 			© 2021 Dmitry Osipchuk - Find me on{' '}
-			<a href="https://github.com/do88" target="_blank">
+			<a href="https://github.com/do88" target="_blank" rel="noreferrer">
 				GitHub
 			</a>{' '}
 			or{' '}
-			<a href="https://www.linkedin.com/in/osipchuk/" target="_blank">
+			<a href="https://www.linkedin.com/in/osipchuk/" target="_blank" rel="noreferrer">
 				LinkedIn
 			</a>
 		</footer>

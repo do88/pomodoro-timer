@@ -5,6 +5,7 @@ import { MyContext } from './context';
 // Project components
 import Header from './components/header';
 import Footer from './components/footer';
+import Timer from './components/timer';
 
 // App styling
 import './index.css';
@@ -16,7 +17,7 @@ class App extends React.Component {
 		return (
 			<div className="wrapper">
 				<Header />
-				<main className="timer">Timer</main>
+				<Timer />
 				<Footer />
 			</div>
 		);
