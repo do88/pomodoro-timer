@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 const MyContext = React.createContext();
 class MyProvider extends Component {
 	state = {
-		stage: 1,
-		players: [],
-		result: '',
+		initialMinute: 25,
+		initialSeconds: 0,
 	};
 
 	render() {

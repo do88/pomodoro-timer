@@ -1,9 +1,11 @@
-import '../styles/Footer.css';
+import '../styles/Footer.scss';
 
 const Header = () => {
+	const date = new Date();
+
 	return (
 		<footer className="footer">
-			© 2021 Dmitry Osipchuk - Find me on{' '}
+			© {date.getFullYear()} Dmitry Osipchuk - Find me on{' '}
 			<a href="https://github.com/do88" target="_blank" rel="noreferrer">
 				GitHub
 			</a>{' '}

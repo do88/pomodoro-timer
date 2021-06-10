@@ -1,0 +1,98 @@
+.timer {
+	width: 90%;
+	max-width: 700px;
+	margin: 2.4rem 0;
+	background: var(--color-white);
+	border-radius: 1rem;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+.timer__wrapper {
+	padding: 3rem;
+}
+
+.timer__controls {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 3rem;
+
+	@media only screen and (min-width: 45em) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	button {
+		&:not(:last-child) {
+			margin-bottom: 1.5rem;
+
+			@media only screen and (min-width: 45em) {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.timer__start {
+	position: relative;
+	left: 50%;
+	top: -2.5rem;
+	transform: translateX(-50%);
+
+	span {
+		display: none;
+	}
+
+	span.active {
+		display: block;
+	}
+}
+
+.timer__clock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-red);
+	padding: 2rem 0 1.5rem;
+	border-radius: 1.25rem;
+	text-align: center;
+	color: var(--color-white);
+	font-size: 25vmin;
+	line-height: 1;
+	font-weight: 700;
+
+	@media only screen and (min-width: 45em) {
+		font-size: 20rem;
+		padding: 3.5rem 0 1rem;
+	}
+}
+
+.timer__meta {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--color-dark-grey);
+
+	@media only screen and (min-width: 45em) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	> div:not(:last-child) {
+		margin-bottom: 1.5rem;
+	}
+}
+
+.timer__settings,
+.timer__rounds {
+	display: flex;
+	align-items: center;
+	font-size: 2.4rem;
+
+	span {
+		margin-left: 1rem;
+	}
+}

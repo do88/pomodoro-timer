@@ -8,7 +8,7 @@ import Footer from './components/footer';
 import Timer from './components/timer';
 
 // App styling
-import './index.css';
+import './index.scss';
 
 class App extends React.Component {
 	static contextType = MyContext;

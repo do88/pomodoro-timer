@@ -1,5 +1,5 @@
 import { ReactComponent as Logo } from '../images/pomodoro-logo.svg';
-import '../styles/Header.css';
+import '../styles/Header.scss';
 
 const Header = () => {
 	return (

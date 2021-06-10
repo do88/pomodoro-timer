@@ -1,0 +1,106 @@
+/* PostCSS Normalize */
+@import-normalize;
+
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
+
+/* CSS Variables */
+:root {
+	--color-red: #ed1c24;
+	--color-blue: #466ea3;
+	--color-green: #52a123;
+	--color-white: #fff;
+	--color-light-grey: #ecedef;
+	--color-med-grey: #738692;
+	--color-dark-grey: #47505f;
+}
+
+/**
+ * Fix fonts that render as bold in Firefox
+ */
+
+html {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	font-weight: 400;
+}
+
+/**
+   * Firefox specific rule
+   */
+
+@-moz-document url-prefix() {
+	body {
+		font-weight: lighter !important;
+	}
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Wrapper */
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 100vh;
+	background: var(--color-light-grey);
+}
+
+button,
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	background: var(--color-red);
+	color: var(--color-white);
+	padding: 1.5rem 2.5rem 1.25rem;
+	font-size: 2.4rem;
+	font-family: inherit;
+	line-height: 1;
+	border-radius: 3rem;
+	font-weight: bold;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	svg {
+		position: relative;
+		fill: currentColor;
+		width: 2rem;
+		height: 2rem;
+		margin-left: 1rem;
+		top: 2px;
+	}
+
+	&.button--blue {
+		background: var(--color-blue);
+	}
+	&.button--green {
+		background: var(--color-green);
+	}
+	&.button--grey {
+		background: var(--color-dark-grey);
+	}
+	&.button--settings {
+		background: #ecedef;
+		color: var(--color-dark-grey);
+	}
+}
