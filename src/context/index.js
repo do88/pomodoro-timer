@@ -5,6 +5,7 @@ class MyProvider extends Component {
 	state = {
 		initialMinute: 25,
 		initialSeconds: 0,
+		timerActive: false,
 	};
 
 	render() {

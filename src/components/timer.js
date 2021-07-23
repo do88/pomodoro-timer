@@ -11,30 +11,31 @@ import '../styles/Timer.scss';
 const Timer = () => {
 	const context = useContext(MyContext);
 
-	console.log(context);
+	const [minutes, setMinutes] = useState(context.state.initialMinute);
+	const [seconds, setSeconds] = useState(context.state.initialSeconds);
+	const [timerStatus, setTimerStatus] = useState(context.state.timerActive);
 
-	// const { initialMinute = 0, initialSeconds = 0 } = props;
-	// const [minutes, setMinutes] = useState(initialMinute);
-	// const [seconds, setSeconds] = useState(initialSeconds);
+	useEffect(() => {
+		if (timerStatus === false) return;
 
-	// useEffect(() => {
-	// 	let myInterval = setInterval(() => {
-	// 		if (seconds > 0) {
-	// 			setSeconds(seconds - 1);
-	// 		}
-	// 		if (seconds === 0) {
-	// 			if (minutes === 0) {
-	// 				clearInterval(myInterval);
-	// 			} else {
-	// 				setMinutes(minutes - 1);
-	// 				setSeconds(59);
-	// 			}
-	// 		}
-	// 	}, 1000);
-	// 	return () => {
-	// 		clearInterval(myInterval);
-	// 	};
-	// });
+		const myInterval = setInterval(() => {
+			if (seconds > 0) {
+				setSeconds(seconds - 1);
+			}
+			if (seconds === 0) {
+				if (minutes === 0) {
+					clearInterval(myInterval);
+				} else {
+					setMinutes(minutes - 1);
+					setSeconds(59);
+				}
+			}
+		}, 1000);
+
+		return () => {
+			clearInterval(myInterval);
+		};
+	});
 
 	return (
 		<main className="timer">
@@ -44,13 +45,18 @@ const Timer = () => {
 					<button className="button button--blue short-break-js">short break</button>
 					<button className="button button--green long-break-js">long break</button>
 				</div>
-				<div className="timer__clock">25:00</div>
-				<div className="timer__start button button--grey">
-					start
-					<span className="play active">
+				<div className="timer__clock">
+					{minutes}:{seconds === 0 ? '00' : seconds}
+				</div>
+				<div
+					className={`timer__start button ${!timerStatus ? 'button--grey' : 'button--green'}`}
+					onClick={() => setTimerStatus(!timerStatus)}
+				>
+					{timerStatus ? 'Pause' : 'Start'}
+					<span className={`play ${!timerStatus ? 'active' : ''}`}>
 						<Play />
 					</span>
-					<span className="pause">
+					<span className={`pause ${timerStatus ? 'active' : ''}`}>
 						<Pause />
 					</span>
 				</div>
