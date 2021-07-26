@@ -1,6 +1,6 @@
 import '../styles/Footer.scss';
 
-const Header = () => {
+const Footer = () => {
 	const date = new Date();
 
 	return (
@@ -17,4 +17,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default Footer;
