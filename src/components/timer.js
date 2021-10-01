@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import React, { useEffect, useContext } from 'react';
 import { MyContext } from '../context';
 
@@ -13,51 +15,47 @@ import '../styles/Timer.scss';
 const Timer = () => {
 	const context = useContext(MyContext);
 
-	const timerStatus = context.state.timerActive;
-	const minutes = context.state.initialMinute;
-	const seconds = context.state.initialSeconds;
+	const time = dayjs(context.state.time).format('mm:ss');
+	const timerStatus = context.state.timerActive && time !== '00:00';
 
 	useEffect(() => {
 		if (timerStatus === false) return;
 
 		const myInterval = setInterval(() => {
-			if (seconds > 0) {
-				context.updateSeconds();
+			if (time !== '00:00') {
+				context.updateTime();
 			}
-			if (seconds === 0) {
-				if (minutes === 0) {
-					clearInterval(myInterval);
-				} else {
-					context.updateMinutes();
-					context.updateSeconds();
-				}
-			}
-		}, 200);
+		}, 10);
 
-		return () => {
-			clearInterval(myInterval);
-		};
+		return () => clearInterval(myInterval);
+	});
+
+	useEffect(() => {
+		if (time === '00:00') {
+			context.nextRound();
+			return;
+		}
 	});
 
 	return (
 		<main className="timer">
 			<div className="timer__wrapper">
 				<ControlStrip />
-				<div className="timer__clock">
-					{minutes}:{seconds === 0 ? '00' : seconds}
-				</div>
-				<div
-					className={`timer__start button ${!timerStatus ? 'button--grey' : 'button--green'}`}
+				<div className="timer__clock">{time}</div>
+				<button
+					className={`timer__start button ${timerStatus ? 'button--green' : 'button--grey'}`}
 					onClick={() => context.setTimerStatus()}
 				>
-					{timerStatus ? 'Pause' : 'Start'}
-					<span className={`play ${!timerStatus ? 'active' : ''}`}>
-						<Play />
-					</span>
-					<span className={`pause ${timerStatus ? 'active' : ''}`}>
-						<Pause />
-					</span>
-				</div>
+					{timerStatus ? (
+						<span className="play">
+							Pause <Pause />
+						</span>
+					) : (
+						<span className="pause">
+							Start <Play />
+						</span>
+					)}
+				</button>
 				<div className="timer__meta">
 					<RoundCounter />
 					<SettingsButton />
