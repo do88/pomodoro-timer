@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { MyContext } from '../context';
 
 import { ReactComponent as Play } from '../images/play.svg';
@@ -13,26 +13,26 @@ import '../styles/Timer.scss';
 const Timer = () => {
 	const context = useContext(MyContext);
 
-	const [minutes, setMinutes] = useState(context.state.initialMinute);
-	const [seconds, setSeconds] = useState(context.state.initialSeconds);
-	const [timerStatus, setTimerStatus] = useState(context.state.timerActive);
+	const timerStatus = context.state.timerActive;
+	const minutes = context.state.initialMinute;
+	const seconds = context.state.initialSeconds;
 
 	useEffect(() => {
 		if (timerStatus === false) return;
 
 		const myInterval = setInterval(() => {
 			if (seconds > 0) {
-				setSeconds(seconds - 1);
+				context.updateSeconds();
 			}
 			if (seconds === 0) {
 				if (minutes === 0) {
 					clearInterval(myInterval);
 				} else {
-					setMinutes(minutes - 1);
-					setSeconds(59);
+					context.updateMinutes();
+					context.updateSeconds();
 				}
 			}
-		}, 1000);
+		}, 200);
 
 		return () => {
 			clearInterval(myInterval);
@@ -48,7 +48,7 @@ const Timer = () => {
 				</div>
 				<div
 					className={`timer__start button ${!timerStatus ? 'button--grey' : 'button--green'}`}
-					onClick={() => setTimerStatus(!timerStatus)}
+					onClick={() => context.setTimerStatus()}
 				>
 					{timerStatus ? 'Pause' : 'Start'}
 					<span className={`play ${!timerStatus ? 'active' : ''}`}>

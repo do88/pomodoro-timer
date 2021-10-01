@@ -3,9 +3,39 @@ import React, { Component } from 'react';
 const MyContext = React.createContext();
 class MyProvider extends Component {
 	state = {
-		initialMinute: 25,
-		initialSeconds: 0,
+		initialMinute: 1,
+		initialSeconds: 30,
 		timerActive: false,
+		round: 0,
+		pomodoroActive: false,
+		shortBreakActive: false,
+		longBreakActive: false,
+	};
+
+	updateMinutesHandler = () => {
+		const currentTime = this.state.initialMinute;
+		this.setState({ initialMinute: currentTime - 1 });
+	};
+
+	updateSecondsHandler = () => {
+		const currentTime = this.state.initialSeconds;
+		if (currentTime > 0) {
+			this.setState({ initialSeconds: currentTime - 1 });
+		}
+	};
+
+	setTimerStatusHandler = () => {
+		const round = this.state.round;
+		const pomodoro = this.state.pomodoroActive;
+		const currentStatus = this.state.timerActive;
+
+		this.setState({ timerActive: !currentStatus });
+
+		// Check if first round
+		if (round === 0) {
+			this.setState({ round: round + 1 });
+			this.setState({ pomodoroActive: !pomodoro });
+		}
 	};
 
 	render() {
@@ -14,11 +44,9 @@ class MyProvider extends Component {
 				<MyContext.Provider
 					value={{
 						state: this.state,
-						addPlayer: this.addPlayerHandler,
-						removePlayer: this.removePlayerHandler,
-						next: this.nextHandler,
-						getNewLooser: this.generateLooser,
-						reset: this.resetGame,
+						updateMinutes: this.updateMinutesHandler,
+						updateSeconds: this.updateSecondsHandler,
+						setTimerStatus: this.setTimerStatusHandler,
 					}}
 				>
 					{this.props.children}
