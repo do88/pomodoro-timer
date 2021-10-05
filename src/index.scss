@@ -58,6 +58,12 @@ html {
 	background: var(--color-light-grey);
 }
 
+html,
+body,
+#root {
+	height: 100%;
+}
+
 /* Wrapper */
 .wrapper {
 	display: flex;
