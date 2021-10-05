@@ -34,7 +34,7 @@ const Timer = () => {
 			if (time !== '00:00') {
 				context.updateTime();
 			}
-		}, 10);
+		}, 1000);
 
 		return () => clearInterval(myInterval);
 	});
