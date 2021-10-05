@@ -16,7 +16,7 @@
 	--color-dark-grey: #47505f;
 
 	--color-red-dark: #971418;
-	--color-blue-dark: #18273a;
+	--color-blue-dark: #2a4c77;
 	--color-green-dark: #254d0e;
 }
 
@@ -55,6 +55,7 @@ html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
 	font-family: 'Josefin Sans', sans-serif;
+	background: var(--color-light-grey);
 }
 
 /* Wrapper */
@@ -63,7 +64,7 @@ html {
 	flex-flow: column;
 	align-items: center;
 	justify-content: space-between;
-	min-height: 100vh;
+	min-height: 100%;
 	background: var(--color-light-grey);
 }
 
@@ -75,13 +76,24 @@ button,
 	border: 0;
 	background: var(--color-red);
 	color: var(--color-white);
-	padding: 1.5rem 2.5rem 1.25rem;
-	font-size: 2.4rem;
+	padding: 1rem 1.5rem 1rem;
+	font-size: 1.6rem;
 	font-family: inherit;
 	line-height: 1;
 	border-radius: 3rem;
 	font-weight: bold;
 	transition: all 0.2s ease;
+
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@media only screen and (min-width: 45em) {
+		font-size: 2.4rem;
+		padding: 1.5rem 2.5rem 1.25rem;
+	}
 
 	&:hover {
 		cursor: pointer;
@@ -93,7 +105,6 @@ button,
 		width: 2rem;
 		height: 2rem;
 		margin-left: 1rem;
-		top: 2px;
 	}
 
 	&.button--red {
