@@ -12,7 +12,7 @@ function CircularProgress({ progress, colors }) {
   const circ = r * 2 * Math.PI
 
   return (
-    <svg width={SIZE} height={SIZE} className="progress-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <svg width={SIZE} height={SIZE} className="progress-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
       <circle cx={SIZE / 2} cy={SIZE / 2} r={r} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth={STROKE} />
       <motion.circle
         cx={SIZE / 2} cy={SIZE / 2} r={r}
@@ -57,14 +57,14 @@ export default function Timer() {
 
         <AnimatedButton
           onClick={() => { requestNotificationPermission(); toggleTimer() }}
-          className="w-20 h-20 rounded-full flex items-center justify-center text-white font-semibold shadow-2xl"
+          className="w-20 h-20 rounded-full flex items-center justify-center text-white font-semibold shadow-2xl relative z-10"
           style={{ background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`, boxShadow: `0 10px 40px ${colors.glow}` }}
           whileHover={{ scale: 1.05, boxShadow: `0 15px 50px ${colors.glow}` }}
           ariaLabel={isRunning ? 'Pause timer' : 'Start timer'}
         >
-          <motion.div key={isRunning} initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.2 }}>
+          <motion.span className="pointer-events-none" key={isRunning} initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.2 }}>
             {isRunning ? <PauseIcon /> : <PlayIcon />}
-          </motion.div>
+          </motion.span>
         </AnimatedButton>
 
         <div className="w-[52px]" />
